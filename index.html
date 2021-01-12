@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    
+    <!-- Link to stylesheet -->
+    <link rel="stylesheet" href="./Assets/css/styles.css" />
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="wrapper">
+    <header>
+        <h1>Coding Quiz 101 / <span id="counter" class="h1-timer"> 00:00</span></h1>
+    </header>
+
+    <main>
+        
+        <h2 id="questionText">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds</h2>
+
+            <!-- <ol id="questionsList">
+                <li id="question1"><input type="radio">Option 1</li>
+                <li id="question2"><input type="radio">Option 2</li>
+                <li id="question3"><input type="radio">Option 3</li>
+            </ol> -->
+
+        <footer>
+        <!-- <p>Answers appear inline</p> -->
+        <button id="startTimer" onclick="document.getElementById('counter').style.color = 'white'">Start quiz<span style="font-size: 20px; padding-left: 8px;"><i class="far fa-arrow-alt-circle-right" role="img" aria-label="start quiz"></i></span></button>
+        </footer>
+
+    </main>
+
+    </div>
+
+   <script src="./Assets/Javascript/script.js"></script> 
+</body>
+</html>
