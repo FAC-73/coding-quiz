@@ -1,19 +1,3 @@
-
-
-.wrapper {
-    background-color: #fdc200;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: none;
-    margin: 0px;
-    padding: 0px
-}
-
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
@@ -23,24 +7,15 @@ h1 {
     color: black;
     margin-block-start: 0.2em;
     margin-block-end: 0.2em;
+    margin: auto;
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .h1-timer {
     color: #ddaa03;
     display: inline-block;
-}
-
-
-h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    font-size: 2em;
-    letter-spacing: -0.03em;
-    text-align: start;
-    color: black;
-    margin-block-start: 0.2em;
-    margin-block-end: 0.2em;
-
 }
 
 header {
@@ -50,11 +25,49 @@ header {
     border-bottom: 1px solid black;
 }
 
-main {
-    height: auto;
-    margin-top: 20px;
+
+ul {
+    list-style: none;
+    margin: auto;
+    width: 90%;
+}
+
+li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.507);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: start;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: -20px;
     margin-right: 20px;
-    margin-left: 20px;
+}
+
+footer {
+    flex-direction: row;
+    margin: auto;
+    width: 90%;
+    padding-top: 20px;
+}
+
+
+input[type=radio] {
+    border: 0px;
+    width: 20px;
+    height: 2em;
+}
+
+/* Quiz Classes */
+ .quizContainer {
+    background-color: #fdc200;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 button {
@@ -64,11 +77,11 @@ button {
     font-weight: 500;
     font-size: 1em;
     text-align: center;
-    vertical-align: middle;
     height: 48px;
-    border-style: none;
     padding-left: 12px;
     padding-right: 12px;
+    border-radius: 8px;
+    border-style: none;
 }
 
 button:hover {
@@ -84,31 +97,50 @@ button:active {
 button:disabled {
     background-color: rgba(0, 0, 0, 0.288);
     cursor: not-allowed;
-
 }
 
-ol {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px
-}
-
-li {
-    margin: 8px;
-    border-bottom: 1px solid black;
-    padding: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-size: 20px;
+.question {
+    font-family: helvetica;
+    font-size: 2em;
+    width: 90%;
+    height: auto;
+    margin: auto;
     text-align: start;
+    padding-bottom: 20px;
+}
+.quizMessage {
+    background-color: white;
+    border-radius: 4px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 4px;
+    font-family: Helvetica;
+    color: rgb(0, 0, 0);
+}
+.choiceList {
+    font-family: helvetica;
+    color: black;
+    size: 1em;
     vertical-align: middle;
 }
-
-footer {
-    flex-direction: row;
-    margin-top: 20px;
+.result {
+    height: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+    width: 90%;
+    text-align: center;
+    font-family: helvetica;
+    color: black;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: white;
+    padding-bottom: 0px;
+    padding-top: 14px;
+    
 }
-
+/* End of Quiz Classes */
 
 
 
