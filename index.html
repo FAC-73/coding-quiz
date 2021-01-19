@@ -12,25 +12,40 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- Added link to the jQuery Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+
 
 
 </head>
 <body> 
         <div class="quizContainer">
-             <h1>Coding Quiz 101 / <span id="counter" class="h1-timer">00:00</span></h1>
-    
-            <div class="question"></div>
-            <ul class="choiceList"></ul>
-            <div class="quizMessage"></div>
-            <div class="result"></div>
+            <header>
+             <h1><span class="h1-light">Javascript:</span>(Coding Quiz)</span></h1>
+            </header>
 
-            <footer>
-            <button id="startButton">Start quiz</button>
-            <button id="nextButton">Next question</button>
-            <button id="saveButton">Save score</button>
-            </footer>
+            <div class="question"></div>
+            <div class="row">
+            <div class="column">
+                <ul class="choiceList"></ul>
+                <div class="result"></div>
+                <div class="quizMessage"></div>
+            </div>
+            <div class="columnTimer">
+                <div id="app"></div>
+            </div>
         </div>
+        <footer>
+            <div class="align-content">
+            <button id="startButton"><span style="color: white; size: 28px; padding-left: 8px; padding-right: 8px;"><i class="far fa-play-circle"></i></span>Start quiz</button>
+            <button id="nextButton">Next question</button>
+            <button id="saveButton"><span style="color: white; size: 28px; padding-left: 8px; padding-right: 8px;"><i class="fas fa-save"></i></span>Save score</button>
+            </div>
+        </footer>
     </body>
 
    <script src="./Assets/Javascript/script.js"></script> 

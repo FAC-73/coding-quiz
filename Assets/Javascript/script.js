@@ -28,7 +28,7 @@ var questions = [{
 var currentQuestion = 0;
 var correctAnswers = 0;
 var quizOver = false;
-var initialsValue = 2;
+var initials = "";
 var initialsText = ""
 var startText = "Try to answer the following code related questions within the time limit, keep in time that incorrect answers will penalize your time by 10 seconds";
 
@@ -39,7 +39,8 @@ var startText = "Try to answer the following code related questions within the t
 $(document).ready(function () {
         
     // Display the introduction text and start button
-    $('.question').show();
+    $(".row").hide();
+    // $('.question').show();
     $('.question').text(startText);
     $("#nextButton").hide();
     $("#saveButton").hide();
@@ -55,13 +56,18 @@ $(document).ready(function () {
     $(this).find("#saveButton").on("click", function () {
 
         var savedInitials = prompt("You got " + correctAnswers + " correct answers add your initials and click OK to save");
+
+        // var response = initials.toLowerCase() === "Thanks for submitting your highscore":
+        // `${initials}`;
+        alert(response);
+
         if (savedInitials = null) {
             return;
         }
-        else if (savedInitials == initialsValue) {
-            localStorage.setItem(initialsText == savedInitials);
-            console.log(initialsText);
-        }
+        // else if {
+        //     localStorage.setItem(initialsText == savedInitials);
+        //     console.log(initialsText);
+        // }
     }); 
 
         $(this).find("#nextButton").on("click", function () {
@@ -75,7 +81,7 @@ $(document).ready(function () {
                     $(document).find(".quizMessage").show();
 
                 } else {
-                    // $(document).find(".quizMessage").hide();
+                    $(document).find(".quizMessage").hide();
             
                     if (value == questions[currentQuestion].correctAnswer) {
                         correctAnswers++;
@@ -98,6 +104,9 @@ $(document).ready(function () {
                         $("#nextButton").text("Play again?");
                         $("#saveButton").show();
                         $(".choiceList").hide();
+                        $("#app").hide();
+                        onTimesUp();
+                        resetTimer();
                     }
                 }
 
@@ -119,7 +128,7 @@ $(document).ready(function () {
         
             var question = questions[currentQuestion].question;
             var questionClass = $(document).find(".quizContainer > .question");
-            var choiceList = $(document).find(".quizContainer > .choiceList");
+            var choiceList = $(document).find(".column > .choiceList");
             var numChoices = questions[currentQuestion].choices.length;
         
             // Set the questionClass text to the current question
@@ -138,10 +147,11 @@ $(document).ready(function () {
 // Sets up UI ready for quiz, starts timer, loads questions and controls
         function startQuiz() {
             displayCurrentQuestion();
-            fiveMinutes();
-            $("#counter").css("color", "white");
+            $("#counter").css("color", "black");
             $("#nextButton").show();
             $("#startButton").hide();
+            $(".row").show();
+            startTimer();
         }
 
 // Resets the question and answer variables to play quiz again     
@@ -149,32 +159,37 @@ $(document).ready(function () {
             currentQuestion = 0;
             correctAnswers = 0;
             hideScore();
-            resetTimer();
             $(".choiceList").show();
+            $("#app").show();
+            startTimer();
         }
         
 // Displays score when a question is answered correctly
         function displayScore() {
-            $(document).find(".quizContainer > .result").text("Correct answer!");
-            $(".result").css("color", "green");
-            $(document).find(".quizContainer > .result").show();
+            $(document).find(".column > .result").text("Correct answer!");
+            $(".result").css({"color": "#155724", "border": "1px solid #C3E6CB", "background-color": "#D4EDDA"});
+            $(".result").addClass(".result-success");
+            // $(document).find(".quizContainer > .result").show();
+            $(".result").fadeIn("slow").show();
         }
 
 // Displays message that answer is incorrect - updates timer to remove 10s from current time elapsed  - NEED HELP HERE
         function displayIncorrectAnswer() {
-            $(document).find(".quizContainer > .result").text("Incorrect answer, 10 seconds have been removed from your quiz time");
-            $(document).find(".quizContainer > .result").show();
-            $(".result").css("color", "red");
+            $(document).find(".column > .result").text("Incorrect answer, 10 seconds have been deducted from your quiz time");
+            // $(document).find(".quizContainer > .result").show();
+            $(".result").fadeIn("slow").show();
+            $(".result").css({"color": "#721C24", "border": "1px solid #F5C6CB", "background-color": "#F8D7DA"});
             $(document).find("#counter").setInterval()(minutes, seconds, - 10000);
             currentQuestion++;
         }
 
 // Displays total answers at end of the quiz and prompts if the user wants to save their score
         function displayTotalScore() {
-            $(document).find(".quizContainer > .result").text("Your total score is: " + correctAnswers + " out of: " + questions.length);
-            $(document).find(".quizContainer > .result").show();
+            $(document).find(".column > .result").text("Your total score is: " + correctAnswers + " out of: " + questions.length);
+            // $(document).find(".quizContainer > .result").show();
+            $(".result").fadeIn("slow").show();
             $(".result").css("color", "black");
-            $('.question').text("would you like to save your score?");
+            $('.question').text("Would you like to save your score?");
         }
 
 // Hides the result html div
@@ -182,33 +197,63 @@ $(document).ready(function () {
             $(document).find(".result").hide();
         }
 
-// Sets the time allotted for the countdown timer 
-        function fiveMinutes() {
-            var fiveMinutes = 60 * 5,
-            display = document.querySelector('#counter');
-            startTimer(fiveMinutes, display);
-        }
 
-//  Resets the timer to 0 - NEED HELP HERE
-        function resetTimer() {
-            clearInterval(minutes, seconds);
-            display.textContent = "00:00";
-        }
 
-//  Countdown timer function
-        function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-        
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-        
-                display.textContent = minutes + ":" + seconds;
-        
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
+// Timer function
+
+// variables for time elapsed and time left, set the limit for the timer
+const TIME_LIMIT = 60;
+let timePassed = 0;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
+
+// Inserts the timer into HTML element
+document.getElementById("app").innerHTML = `
+<div class="base-timer">
+  <span id="base-timer-label" class="base-timer__label">${formatTime(
+    timeLeft
+  )}</span>
+</div>
+`;
+
+// Stops the timer once timelimt is reached
+function onTimesUp() {
+  clearInterval(timerInterval);
+  // alert("You've run out of time");
+  // $(".row").hide()
+  // $(".question").text("Click the play again button to restart the quiz")
+}
+
+// Clears and resets the timer to original limit in time limit variable
+function resetTimer() {
+  clearInterval(timeLeft, timePassed);
+  document.getElementById("base-timer-label").innerHTML = formatTime(TIME_LIMIT);
+}
+
+// function for counting down
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timePassed = timePassed += 1;
+    timeLeft = TIME_LIMIT - timePassed;
+    document.getElementById("base-timer-label").innerHTML = formatTime(
+      timeLeft
+    );
+
+    if (timeLeft === 0) {
+      onTimesUp();
+    }
+  }, 1000);
+}
+
+// function for formatting and outputting the time
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  return `${minutes}:${seconds}`;
+}
+

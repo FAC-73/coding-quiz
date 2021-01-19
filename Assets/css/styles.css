@@ -1,7 +1,37 @@
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  padding-left: -20px;
+  padding-right: 20px;
+}
+
+@media (max-width: 800px) {
+  .row {
+    flex-wrap: wrap;
+  } 
+}
+
+.column {
+    width: 75%;
+  }
+
+.columnTimer {
+    width: 25%;
+}
+
+@media (max-width: 800px) {
+  .column, .columnTimer {
+    flex: 100%;
+  } 
+}
+
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono';
     font-weight: bolder;
-    font-size: 5em;
+    font-size: 4em;
     letter-spacing: -0.06em;
     text-align: start;
     color: black;
@@ -10,59 +40,79 @@ h1 {
     margin: auto;
     width: 90%;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 32px;
 }
 
-.h1-timer {
-    color: #ddaa03;
-    display: inline-block;
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2em;
+  } 
 }
+
+
+.h1-light {
+    color: white;
+    font-family: 'Roboto Mono';
+
+}
+
 
 header {
     height: auto;
-    margin-right: 20px;
-    margin-left: 20px;
-    border-bottom: 1px solid black;
+    width: 100%;
+    background-color: #fdc200;
 }
 
 
 ul {
     list-style: none;
     margin: auto;
-    width: 90%;
 }
 
 li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.507);
-    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #f0f0f0;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    font-family: 'Roboto Mono';
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.5em;
     text-align: start;
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-left: -20px;
     margin-right: 20px;
+    margin-bottom: 8px;
+    height: 40px;
 }
 
-footer {
-    flex-direction: row;
-    margin: auto;
-    width: 90%;
-    padding-top: 20px;
+@media (max-width: 800px) {
+li {
+    font-size: 1em;
+    height: 32px;
+  } 
 }
-
 
 input[type=radio] {
     border: 0px;
     width: 20px;
     height: 2em;
+    margin-right: 12px;
+    vertical-align: baseline;
 }
+
+@media (max-width: 800px) {
+input[type=radio] {
+     vertical-align: text-top;
+    } 
+  }
 
 /* Quiz Classes */
  .quizContainer {
-    background-color: #fdc200;
+    background-color: white;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -73,7 +123,7 @@ input[type=radio] {
 button {
     background-color: black;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono';
     font-weight: 500;
     font-size: 1em;
     text-align: center;
@@ -102,45 +152,129 @@ button:disabled {
 .question {
     font-family: helvetica;
     font-size: 2em;
+    font-weight: 600;
+    letter-spacing: -0.025em;
     width: 90%;
     height: auto;
     margin: auto;
     text-align: start;
-    padding-bottom: 20px;
+    padding-bottom: 28px;
+    padding-top: 28px;
 }
+
+@media (max-width: 800px) {
+  .question {
+    font-size: 1.25em;
+  } 
+}
+
 .quizMessage {
-    background-color: white;
-    border-radius: 4px;
-    width: 90%;
-    margin: auto;
-    text-align: center;
-    padding: 4px;
-    font-family: Helvetica;
-    color: rgb(0, 0, 0);
+  height: 32px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  text-align: center;
+  font-family: helvetica;
+  color: black;
+  font-size: 16px;
+  background-color: #f5f5f5;
+  border: 1px solid #d1d1d1;
+  padding-bottom: 0px;
+  padding-top: 14px;  
 }
 .choiceList {
-    font-family: helvetica;
     color: black;
     size: 1em;
-    vertical-align: middle;
 }
 .result {
     height: 32px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 12px;
+    margin-bottom: 8px;
     margin-top: 12px;
-    width: 90%;
     text-align: center;
     font-family: helvetica;
     color: black;
     font-size: 16px;
-    border-radius: 4px;
-    background-color: white;
+    background-color: #f5f5f5;
+    border: 1px solid #f0f0f0;
     padding-bottom: 0px;
-    padding-top: 14px;
-    
+    padding-top: 14px;  
 }
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0.795) !important;
+    backdrop-filter: blur(12px);
+    border-top: 1px solid #f0f0f0;
+}
+
+  @supports (backdrop-filter: none) {
+    .bg-light {
+    backdrop-filter: blur(12px)!important;}
+    }
+
+  @supports not (backdrop-filter: none) {
+  .bg-light {
+  background-color: white !important;}
+    } 
+
+.align-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 20px 20px 20px 20px;
+}
+
 /* End of Quiz Classes */
+
+#app {
+    font-family: 'Roboto Mono';
+    display: grid;
+    height: 256px;
+    place-items: center;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+  }
+  
+  .base-timer {
+    position: relative;
+    width: 280px;
+    height: inherit;
+  }
+
+  @media (max-width: 800px) {
+    .base-timer {
+    width: 200px;
+    height: inherit;
+    
+    } 
+  }
+ 
+  .base-timer__label {
+    position: absolute;
+    width: 280px;
+    height: inherit;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+  }
+  
+  @media (max-width: 700px) {
+    .base-timer__label {
+      font-size: 2.5em;
+      width: 200px;
+      height: 200px;
+    } 
+  }
 
 
 
