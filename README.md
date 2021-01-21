@@ -81,27 +81,30 @@ To get a local copy up and running follow these simple steps. You can also downl
 #### Included functionality
 The start quiz button includes an eventListener that initializes the quiz questions and starts a dynamic timer that starts at 01m:00s.
 
-1. For each of the five questions provided select an answer using the inputs, then click next question.
-
-![Password Generator prompt](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/promptValue.png?raw=true "Password Generator prompt")
+![Start quiz](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Quiz-start.png?raw=true "Start quiz")
 <br>
 
-![Password Generator prompt invalid](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/invalidLength.png?raw=true "Password Generator prompt invalid")
+1. For each of the five questions provided select an answer using the inputs, then click next question to submit your answer and iterate to the next question.
+
+![Multiple selection answers](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Questions-Init.png?raw=true "Multiple selection answers")
 <br>
 
-2. If the answer for each question is incorrect you'll be notifed, along with a 10s deduction from the running timer and moved on to the next question
+![Selected option](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Question-select.png?raw=true "Selected option")
+<br>
 
-![Cancel action](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/cancelNull.png?raw=true "Cancel action")
+2. If the answer is incorrect you'll be notifed, along with a 10s deduction from the running timer and moved on to the next question
+
+![Incorrect answer](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/incorrect-answer.png?raw=true "Incorrect answer")
 <br>
 
 3. Correct answers are notified in green and no time is deducted. Correct answers are stored in variable and incremented as you move through the 5 questions
 
-![Password Generator confirm password parameters](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/IncludeParamenters.png?raw=true "confirm password parameters")
+![Correct answer](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/correct-answer.png?raw=true "Correct answer")
 <br>
 
 4. If the user does not select a checkbox from the list of questions the value is marked as undefined and the user is prompted to select a question before they are able to move onto the next question
 
-![Include at least one parameter](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/invalidCriteria.png?raw=true "Include at least one parameter")
+![Select at least one option](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/undefined.png?raw=true "Select at least one option")
 <br>
 
 5. If the user runs out of time before reaching the last question the quiz is automatically reset (questions, total scores and timer) to the beginning. 
@@ -110,21 +113,20 @@ The start quiz button includes an eventListener that initializes the quiz questi
 - Play again (This restarts the quiz from the beginning)
 - Save score (this displays a form where they can submit their initials)
 
-7. The save score form displays a text input where the user can type their initials, along with a submit button to save it. Their score number is also displayed above the input
-
-![Generate password](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/generatePassword.png?raw=true "generate password")
+![Save score or play again?](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/score-total.png?raw=true"Save score or play again?")
 <br>
 
-8. Their saved score and initials is displayed into a list on submit. Along with two more options:
+7. The save score form displays a text input where the user can type their initials, along with a submit button to save it. Their score number is also displayed above the input
+
+![Add initials and save score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Add-initials.png?raw=true"Add initials and save score")
+<br>
+
+8. Saved score and initials are stored in list, along with two actions:
 - Remove score
 - Play again
 
 Remove score deletes the list item. Play again restarts the quiz from the beginning.
 
-![Copy password](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/copy.png?raw=true "copy password")
-<br>
-
-![Copy password confirm](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/copy3.png?raw=true "copy password confirm")
 <br>
 
 
@@ -136,20 +138,20 @@ Semantic html is used for elements such as buttons, inputs, footers, header, h1,
 
 3. script.js - Contains Variables, variable arrays and objects for the questions and multiple choice answers, variable for correct answer types. 
 
-Four eventListeners one to iterate through the questions, one to start the quiz, one to reset it and another to submit form details. 
+- Four eventListeners one to iterate through the questions, one to start the quiz, one to reset it and another to submit form details. 
 
-A loop for iterating through the questions list and generating the new choice list for each one. 
-
+- A loop for iterating through the questions list and generating the new choice list for each one. 
+- 
 A setInterval timer function that's triggered by an eventListener, functions to reset, deduct and restart the timer. 
 
-If, Else statements for validating whether the selected answer is correct, or undefined. If correct they are iterated onto the next question and the correct score is added to the variable correctAnswers, along with a correct message indicator. 
+- If, Else statements for validating whether the selected answer is correct, or undefined. If correct they are iterated onto the next question and the correct score is added to the variable correctAnswers, along with a correct message indicator. 
 
-If incorrect 10s is removed from the running timer using the deductTime function, an incorrect message is displayed. If an incorrect answer takes the timer to a value of <=0 the quiz is automatically restarted
+- If incorrect 10s is removed from the running timer using the deductTime function, an incorrect message is displayed. If an incorrect answer takes the timer to a value of <=0 the quiz is automatically restarted
 
 
 
 #### Responsive view example - On mobile
-![Responsive layout](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/responsive.PNG?raw=true "Responsive views")
+![Responsive layout](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Responsive.png?raw=true "Responsive views")
 
 
 #### Pushing to GitHub
