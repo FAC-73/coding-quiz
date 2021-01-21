@@ -1,3 +1,5 @@
+/* QUIZ CONTAINER */
+
 .row {
   display: flex;
   flex-wrap: nowrap;
@@ -20,6 +22,9 @@
 
 .columnTimer {
     width: 25%;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 200px;
 }
 
 @media (max-width: 800px) {
@@ -27,6 +32,19 @@
     flex: 100%;
   } 
 }
+
+.quizContainer {
+  background-color: white;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* HEADER  */
 
 h1 {
     font-family: 'Roboto Mono';
@@ -49,13 +67,11 @@ h1 {
   } 
 }
 
-
 .h1-light {
     color: white;
     font-family: 'Roboto Mono';
 
 }
-
 
 header {
     height: auto;
@@ -63,6 +79,7 @@ header {
     background-color: #fdc200;
 }
 
+/* QUESTIONS LIST  */
 
 ul {
     list-style: none;
@@ -87,6 +104,11 @@ li {
     height: 40px;
 }
 
+.choiceList {
+  color: black;
+  size: 1em;
+}
+
 @media (max-width: 800px) {
 li {
     font-size: 1em;
@@ -108,17 +130,7 @@ input[type=radio] {
     } 
   }
 
-/* Quiz Classes */
- .quizContainer {
-    background-color: white;
-    width: 100%;
-    min-height: 100vh;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin: 0px;
-    padding: 0px;
-}
+/* BUTTONS */
 
 button {
     background-color: black;
@@ -148,6 +160,8 @@ button:disabled {
     background-color: rgba(0, 0, 0, 0.288);
     cursor: not-allowed;
 }
+
+/* QUIZ QUESTION, RESULT AND PROMPT */
 
 .question {
     font-family: helvetica;
@@ -184,10 +198,7 @@ button:disabled {
   padding-bottom: 0px;
   padding-top: 14px;  
 }
-.choiceList {
-    color: black;
-    size: 1em;
-}
+
 .result {
     height: 32px;
     margin-left: 20px;
@@ -205,34 +216,7 @@ button:disabled {
     padding-top: 14px;  
 }
 
-footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(255, 255, 255, 0.795) !important;
-    backdrop-filter: blur(12px);
-    border-top: 1px solid #f0f0f0;
-}
-
-  @supports (backdrop-filter: none) {
-    .bg-light {
-    backdrop-filter: blur(12px)!important;}
-    }
-
-  @supports not (backdrop-filter: none) {
-  .bg-light {
-  background-color: white !important;}
-    } 
-
-.align-content {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    padding: 20px 20px 20px 20px;
-}
-
-/* End of Quiz Classes */
+/* TIMER ELEMENTS */
 
 #app {
     font-family: 'Roboto Mono';
@@ -270,11 +254,93 @@ footer {
   
   @media (max-width: 700px) {
     .base-timer__label {
-      font-size: 2.5em;
+      font-size: 4em;
+      margin-top: 12%;
       width: 200px;
       height: 200px;
     } 
   }
+
+/* SAVE SCORE */
+
+input[type=text] {
+  border: 1px solid #d1d1d1;
+  width: 300px;
+  height: 48px;
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 16px;
+  margin-right: 12px;
+  margin-left: 20px;
+  font-size: 16px;
+  font-family: Helvetica;
+}
+
+input[type=submit] {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto Mono';
+    font-weight: 500;
+    font-size: 1em;
+    text-align: center;
+    height: 48px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 8px;
+    border-style: none;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(0, 0, 0, 0.801);
+    cursor: pointer;
+}
+
+input[type=submit]:active {
+    background-color: rgb(0, 0, 0);
+    border: 1px white solid;
+}
+
+input[type=submit]:disabled {
+    background-color: rgba(0, 0, 0, 0.288);
+    cursor: not-allowed;
+}
+
+label {
+  font-family: Helvetica;
+  font-size: 16px;
+  color: black;
+  margin-left: 20px;
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.795) !important;
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #f0f0f0;
+}
+
+@supports (backdrop-filter: none) {
+footer {
+  backdrop-filter: blur(12px)!important;}
+  }
+
+@supports not (backdrop-filter: none) {
+footer {
+background-color: white !important;}
+  } 
+
+.align-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  padding: 20px 20px 20px 20px;
+}
+
 
 
 
