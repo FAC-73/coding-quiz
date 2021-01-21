@@ -2,7 +2,7 @@
 A timed coding quiz application with multiple-choice questions. This app runs in the browser and includes dynamically updated HTML and CSS powered by JavaScript and Jquery. It also includes a fully responsive interface that can scale from large screens to small
 
 
-![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/correct-answer.png?raw=true "Javascript coding quiz app")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/CodingQuizDemo.png?raw=true "Javascript coding quiz app")
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -43,8 +43,8 @@ A timed coding quiz application with multiple-choice questions. This app runs in
 
 * [HTML](https://www.w3schools.com/)
 * [CSS](https://www.w3schools.com/)
-* [Javascript](https://www.w3schools.com/))
-* [Jquery](https://jquery.com/))
+* [Javascript](https://www.w3schools.com/)
+* [Jquery](https://jquery.com/)
 * [FontAwesome](https://fontawesome.com/)
 
 
@@ -69,7 +69,7 @@ To get a local copy up and running follow these simple steps. You can also downl
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Quiz-start.png?raw=true "Javascript coding quiz app")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/CodingQuizDemo.png?raw=true "Javascript coding quiz app")
 
 #### What's included
 1. HTML, CSS and Javascript (incl. Jquery) files include the source code for running the timed quiz application
