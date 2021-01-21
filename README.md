@@ -2,7 +2,7 @@
 A timed coding quiz application with multiple-choice questions. This app runs in the browser and includes dynamically updated HTML and CSS powered by JavaScript and Jquery. It also includes a fully responsive interface that can scale from large screens to small
 
 
-![Website screenshot](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/copy3.png?raw=true "Password Generator App")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/correct-answer.png?raw=true "Javascript coding quiz app")
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -33,7 +33,7 @@ A timed coding quiz application with multiple-choice questions. This app runs in
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Password Generator Screenshot](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/Start.png?raw=true "Password Generator Screenshot")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/score-total.png?raw=true "Javascript coding quiz app")
 <br><br>
 
 **Built using Javascript, Jquery, HTML and CSS. This timed Javascript coding quiz is an application that provides a set of mulitple choice questions on Javascript programming. Each incorrect answer deducts 10 seconds from the timer. If time runs out the quiz is reset and the user is able to restart the quiz again. If the user manages to answer all questions in the allocated time they can save their score along with their initials.**
@@ -69,11 +69,11 @@ To get a local copy up and running follow these simple steps. You can also downl
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-![Password generator](https://github.com/FAC-73/password-generator/blob/main/Assets/Images/Start.png?raw=true "Password Generator")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Quiz-start.png?raw=true "Javascript coding quiz app")
 
 #### What's included
 1. HTML, CSS and Javascript (incl. Jquery) files include the source code for running the timed quiz application
-2. This project demonstrates ways in which javavscript and jquery can be used to manipulate the DOM elements, store data in variables, and dynamically update HTML and trigger interactions through the use of Jquery eventListeners.
+2. This project demonstrates ways in which javavscript and jquery can be used to manipulate the DOM elements, store and pass data to and from variables, and dynamically update HTML and trigger interactions through the use of Jquery eventListeners.
 
 
 ## Project deliverables
@@ -86,7 +86,7 @@ The start quiz button includes an eventListener that initializes the quiz questi
 
 1. For each of the five questions provided select an answer using the inputs, then click next question to submit your answer and iterate to the next question.
 
-![Multiple selection answers](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Questions-Init.png?raw=true "Multiple selection answers")
+![Multiple selection answers](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Questions-Init.png?raw=true  "Multiple selection answers")
 <br>
 
 ![Selected option](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Question-select.png?raw=true "Selected option")
@@ -113,12 +113,12 @@ The start quiz button includes an eventListener that initializes the quiz questi
 - Play again (This restarts the quiz from the beginning)
 - Save score (this displays a form where they can submit their initials)
 
-![Save score or play again?](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/score-total.png?raw=true"Save score or play again?")
+![Save score or play again?](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/score-total.png?raw=true "Save score or play again?")
 <br>
 
 7. The save score form displays a text input where the user can type their initials, along with a submit button to save it. Their score number is also displayed above the input
 
-![Add initials and save score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Add-initials.png?raw=true"Add initials and save score")
+![Add initials and save score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Add-initials.png?raw=true "Add initials and save score")
 <br>
 
 8. Saved score and initials are stored in list, along with two actions:
@@ -130,22 +130,17 @@ Remove score deletes the list item. Play again restarts the quiz from the beginn
 <br>
 
 
-#### HTML, CSS and Javascript
+#### HTML, CSS and Javascript & Jquery
 1. Index.html - Contains basic layout structure using a custom div element named 'quizContainer' to display the main content for the quiz such as question text, questions list, timer and form elements. 
 Semantic html is used for elements such as buttons, inputs, footers, header, h1, li. 
 
 2. styles.css - Contains layout, styling and media-queries for html content
 
 3. script.js - Contains Variables, variable arrays and objects for the questions and multiple choice answers, variable for correct answer types. 
-
 - Four eventListeners one to iterate through the questions, one to start the quiz, one to reset it and another to submit form details. 
-
 - A loop for iterating through the questions list and generating the new choice list for each one. 
-- 
-A setInterval timer function that's triggered by an eventListener, functions to reset, deduct and restart the timer. 
-
+- A setInterval timer function that's triggered by an eventListener, functions to reset, deduct and restart the timer. 
 - If, Else statements for validating whether the selected answer is correct, or undefined. If correct they are iterated onto the next question and the correct score is added to the variable correctAnswers, along with a correct message indicator. 
-
 - If incorrect 10s is removed from the running timer using the deductTime function, an incorrect message is displayed. If an incorrect answer takes the timer to a value of <=0 the quiz is automatically restarted
 
 
