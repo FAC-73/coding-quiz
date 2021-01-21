@@ -134,6 +134,8 @@ Remove score deletes the list item. Play again restarts the quiz from the beginn
 1. Index.html - Contains basic layout structure using a custom div element named 'quizContainer' to display the main content for the quiz such as question text, questions list, timer and form elements. 
 Semantic html is used for elements such as buttons, inputs, footers, header, h1, li. 
 
+For improved accessibility the aria-role="timer" has been included in the div where the timer is displayed. Along with the aria-live="polite" announcement to inform a screenreader user that the timer is incrementing/decrementing. 
+
 2. styles.css - Contains layout, styling and media-queries for html content
 
 3. script.js - Contains Variables, variable arrays and objects for the questions and multiple choice answers, variable for correct answer types. 

@@ -289,6 +289,7 @@ input[type=submit] {
     padding-right: 12px;
     border-radius: 8px;
     border-style: none;
+    margin-top: 12px;
 }
 
 input[type=submit]:hover {

@@ -20,24 +20,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
-
-
-
 </head>
 
 <body>
+    <!-- CONTAINER TO HOLD QUIZ QUESTIONS LIST, QUESTIONS AND TIMER -->
     <div class="quizContainer">
+
+    <!-- MAIN HEADER -->
         <header>
             <h1><span class="h1-light">Javascript:</span>(Coding Quiz)</span></h1>
         </header>
 
+        <!-- QUESTION -->
         <div class="question"></div>
+
+        <!-- FLEX CONTAINER DIV FOR TWO COLUMN RESPONSIVE LAYOUT -->
         <div class="row">
-            <div class="column">
+
+            <!-- COLUMN CONTAINING QUESTION CHOICES, RESULT MESSAGE AND FORM -->
+            <div class="column" role="main">
                 <ul class="choiceList"></ul>
-                <div class="result"></div>
-                <div class="quizMessage"></div>
-                <div id="saveScore">
+                <div class="result" role="region" aria-live="polite"></div>
+                <div class="quizMessage" role="region" aria-live="polite"></div>
+                <div id="saveScore" role="">
                     <form id="captureName">
                         <label id="score">Your final score is:</label>
                         <div class="addInitials"><input type="text" name="Your-initials" id="captureInitials"></input>
@@ -46,10 +51,14 @@
                     </form>
                 </div>
             </div>
-            <div class="columnTimer">
-                <div id="app"></div>
+
+            <!-- COLUMN CONTAINING TIMER -->
+            <div class="columnTimer" role="complementary">
+                <div id="app" role="timer" aria-live="polite" aria-atomic="true"></div>
             </div>
         </div>
+
+        <!-- FOOTER CONTAINS MAIN ACTIONS FOR ITERATING THROUGH QUIZ AND SAVING SCORES -->
         <footer>
             <div class="align-content">
                 <button id="startButton"><span
@@ -61,7 +70,8 @@
                             class="fas fa-save"></i></span>Save score</button>
             </div>
         </footer>
+
+        <!-- LINK TO JAVASCRIPT -->
         <script src="./Assets/Javascript/script.js"></script>
 </body>
-
 </html>

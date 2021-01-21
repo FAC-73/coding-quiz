@@ -28,10 +28,13 @@ var questions = [{
 var currentQuestion = 0;
 var correctAnswers = 0;
 var quizOver = false;
-var initials = "";
-var initialsText = ""
 var startText = "Try to answer the following code related questions within the time limit, keep in time that incorrect answers will penalize your time by 10 seconds";
 
+// variables for time elapsed and time left, set the limit for the timer
+const TIME_LIMIT = 60;
+let timePassed = 0;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
 
 //Start quiz
 
@@ -164,6 +167,7 @@ function resetQuiz() {
   hideScore();
   $(".choiceList").show();
   $("#app").show();
+  $("#saveScore").hide();
   startTimer();
 }
 
@@ -196,13 +200,7 @@ function hideScore() {
   $(document).find(".result").hide();
 }
 
-// Timer function
-
-// variables for time elapsed and time left, set the limit for the timer
-const TIME_LIMIT = 60;
-let timePassed = 0;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
+// Timer functions
 
 // Inserts the timer into HTML element
 document.getElementById("app").innerHTML = `
@@ -213,7 +211,7 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-// Stops the timer once timelimit is reached skips
+// Stops the timer once timelimit is reached, resets the variables
 function onTimesUp() {
   clearInterval(timerInterval);
   timePassed = 0;
