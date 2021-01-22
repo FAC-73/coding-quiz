@@ -1,5 +1,5 @@
 
-// Variables 
+// GLOBAL VARIABLES
 
 // Questions, choices and answers       
 var questions = [{
@@ -24,6 +24,7 @@ var questions = [{
   correctAnswer: 2
 }];
 
+
 // Variables for storing numbers of correct questions
 var currentQuestion = 0;
 var correctAnswers = 0;
@@ -45,6 +46,8 @@ var scoresList = document.querySelector("#scores-list");
 var scoresCount = document.querySelector("#scores-count");
 var savedInitials = [];
 
+
+// QUIZ FUNCTIONS
 
 // This displays the current question and choices
 function displayCurrentQuestion() {
@@ -119,7 +122,7 @@ function hideScore() {
   $(document).find(".result").hide();
 }
 
-// Timer functions
+// TIMER FUNCTIONS
 
 // Inserts the timer into HTML element
 document.getElementById("app").innerHTML = `
@@ -204,23 +207,25 @@ function deductTime() {
 }
 
 
+// SAVE SCORES AND CREATE SCORES LIST
+
 // Store saved scores to the list
 function renderSavedInitials() {
-// Clear list element and update scoresCount
+  // Clear list element and update scoresCount
   scoresList.innerHTML = "";
   scoresCount.textContent = savedInitials.length;
 
-// Render a new li for each saved score
+  // Render a new li for each saved score
   for (var i = 0; i < savedInitials.length; i++) {
     var initials = savedInitials[i];
 
     var li = document.createElement("li");
-    li.textContent = initials + " | " + correctAnswers + "/5" ;
+    li.textContent = initials + " | " + correctAnswers + "/5";
     li.setAttribute("data-index", i);
 
     var button = document.createElement("button");
     button.textContent = "Remove";
-    $(button).css({ "color": "#721C24", "border": "1px solid #F5C6CB", "background-color": "#F8D7DA", "margin-left": "20px", "height": "36px", "font-size": "1em"})
+    $(button).css({ "color": "#721C24", "border": "1px solid #F5C6CB", "background-color": "#F8D7DA", "margin-left": "20px", "height": "36px", "font-size": "1em" })
 
     li.appendChild(button);
     scoresList.appendChild(li);
@@ -230,19 +235,20 @@ function renderSavedInitials() {
 
 // This function called below will run when the page loads.
 function init() {
-   // Get stored initials from localStorage
-  var storedsavedInitials = JSON.parse(localStorage.getItem("savedInitials"));
 
+  // Get stored initials from localStorage
+  var storedsavedInitials = JSON.parse(localStorage.getItem("savedInitials"));
+ 
   // If tinitials were retrieved from localStorage, update the initials array
   if (storedsavedInitials !== null) {
     savedInitials = storedsavedInitials;
   }
 
-   // Helper function that will render tinitials to the DOM
+  // Helper function that will render tinitials to the DOM
   renderSavedInitials();
 }
 
-  // Stringify and set key in localStorage to initials array
+// Stringify and set key in localStorage to initials array
 function storeSavedInitials() {
   localStorage.setItem("savedInitials", JSON.stringify(savedInitials));
 }
@@ -268,41 +274,41 @@ $(document).ready(function () {
   });
 
   // Add submit event to input/form
-  scoresForm.addEventListener("submit", function(event) {
+  scoresForm.addEventListener("submit", function (event) {
     event.preventDefault();
-  
+
     var initialsText = initialsInput.value.trim();
-  
+
     // Return early if submitted initialsText is blank
     if (initialsText === "") {
       return;
     }
-  
+
     // Add new initialsText into the savedInitials array, clear any strings in the input
     savedInitials.push(initialsText);
     initialsInput.value = "";
-  
+
     // Store updated savedInitials in localStorage, update the list
     storeSavedInitials();
     renderSavedInitials();
   });
 
   // Add click event to remove button in list
-  scoresList.addEventListener("click", function(event) {
+  scoresList.addEventListener("click", function (event) {
     var element = event.target;
-  
+
     // Checks if element is a button
     if (element.matches("button") === true) {
       // Get its data-index value and removes initials element from the list
       var index = element.parentElement.getAttribute("data-index");
       savedInitials.splice(index, 1);
-  
+
       // Store updated savedInitials in localStorage, and updates list
       storeSavedInitials();
       renderSavedInitials();
     }
   });
-  
+
   // Event listener - iterates through the quiz questions
   $(this).find("#nextButton").on("click", function () {
 
