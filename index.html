@@ -26,7 +26,7 @@
     <!-- CONTAINER TO HOLD QUIZ QUESTIONS LIST, QUESTIONS AND TIMER -->
     <div class="quizContainer">
 
-    <!-- MAIN HEADER -->
+        <!-- MAIN HEADER -->
         <header>
             <h1><span class="h1-light">Javascript:</span>(Coding Quiz)</span></h1>
         </header>
@@ -43,12 +43,14 @@
                 <div class="result" role="region" aria-live="polite"></div>
                 <div class="quizMessage" role="region" aria-live="polite"></div>
                 <div id="saveScore" role="">
-                    <form id="captureName">
-                        <label id="score">Your final score is:</label>
-                        <div class="addInitials"><input type="text" name="Your-initials" id="captureInitials"></input>
-                            <input type="submit" id="submitButton" class="submit"></submit>
+                    <form id="scores-form" method="post">
+                        <div class="addInitials"><input type="text" placeholder="Type your initials here"
+                                name="Your-initials" id="scores-text"></input>
+                            <input type="submit"></input>
                         </div>
                     </form>
+                    <p>Top scores: <span id="scores-count">0</span></p>
+                    <ul id="scores-list"></ul>
                 </div>
             </div>
 
@@ -65,13 +67,11 @@
                         style="color: white; size: 28px; padding-left: 8px; padding-right: 8px;"><i
                             class="far fa-play-circle"></i></span>Start quiz</button>
                 <button id="nextButton">Next question</button>
-                <button id="saveButton"><span
-                        style="color: white; size: 28px; padding-left: 8px; padding-right: 8px;"><i
-                            class="fas fa-save"></i></span>Save score</button>
             </div>
         </footer>
 
         <!-- LINK TO JAVASCRIPT -->
         <script src="./Assets/Javascript/script.js"></script>
 </body>
+
 </html>

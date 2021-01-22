@@ -30,103 +30,21 @@ var correctAnswers = 0;
 var quizOver = false;
 var startText = "Try to answer the following code related questions within the time limit, keep in time that incorrect answers will penalize your time by 10 seconds";
 
+
 // variables for time elapsed and time left, set the limit for the timer
 const TIME_LIMIT = 60;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
-//Start quiz
 
-// Fully loads HTML document before initializing controls
-$(document).ready(function () {
+// variables creating the scores list
+var initialsInput = document.querySelector("#scores-text");
+var scoresForm = document.querySelector("#scores-form");
+var scoresList = document.querySelector("#scores-list");
+var scoresCount = document.querySelector("#scores-count");
+var savedInitials = [];
 
-  // Display the introduction text and start button
-  $(".row").hide();
-  // $('.question').show();
-  $('.question').text(startText);
-  $("#nextButton").hide();
-  $("#saveButton").hide();
-  $(".result").hide();
-  $("#saveScore").hide();
-  $(this).find(".quizMessage").hide();
-
-  // Jquery eventListener triggers loading quiz content in via startQuiz function
-  $(this).find("#startButton").on("click", function () {
-    startQuiz()
-  });
-
-  // Jquery eventListener displays save score input and displays number of correct answers
-  $(this).find("#saveButton").on("click", function () {
-   $("#saveScore").show();
-   $("#score").text("Your got " + correctAnswers + " / 5 answers correct");
-   $(".result").hide();
-   $(".question").text("Add your initials and click submit to save your score!");
-  });
-
-  $(this).find("#submitButton").on("click", function(){ 
-    var initials = $(this).val();
-    $("#score").text(initials);
-  
-  });
-
-  // Event listener - iterates through the quiz questions
-  $(this).find("#nextButton").on("click", function () {
-
-    // Event listener - iterates through the quiz questions
-    if (!quizOver) {
-
-      value = $("input[type='radio']:checked").val();
-
-      // Checks to see if a radio input from the choices is selected, if not displays message to select an option
-      if (value == undefined) {
-        $(document).find(".quizMessage").text("Please choose an answer from the options");
-        $(document).find(".quizMessage").show();
-
-      } else {
-        $(document).find(".quizMessage").hide();
-
-        // Validates answer is correct from the choices, iterates to next question, displays correct answer message 
-        if (value == questions[currentQuestion].correctAnswer) {
-          correctAnswers++;
-          displayScore();
-        }
-
-        // Wrong answer triggers deduct 10 seconds function and displays incorrect answer message
-        else {
-          console.log("wrong answer")
-          displayIncorrectAnswer()
-          deductTime();
-        }
-
-        // First question has already been displayed so increment to next
-        currentQuestion++; 
-        if (currentQuestion < questions.length) {
-          displayCurrentQuestion();
-
-        // quiz is over and total score is displayed - option to save score is shown
-        } else {
-          displayTotalScore();
-          quizOver = true;
-          $("#nextButton").text("Play again?");
-          $("#saveButton").show();
-          $(".choiceList").hide();
-          $("#app").hide();
-          onTimesUp();
-          resetTimer();
-        }
-      }
-
-      // reset the quiz and update nextButton text + hide save option
-    } else {
-      quizOver = false;
-      resetQuiz();
-      displayCurrentQuestion();
-      $("#nextButton").text("Next question");
-      $("#saveButton").hide();
-    }
-  });
-});
 
 // This displays the current question and choices
 function displayCurrentQuestion() {
@@ -192,7 +110,8 @@ function displayTotalScore() {
   $(document).find(".column > .result").text("Your total score is: " + correctAnswers + " out of: " + questions.length);
   $(".result").fadeIn("slow").show();
   $(".result").css({ "color": "black", "border": "1px solid #d1d1d1", "background-color": "#f0f0f0" });
-  $('.question').text("Would you like to save your score?");
+  $("#saveScore").show();
+  $(".question").text("Add your initials and click submit to save your score!");
 }
 
 // Hides the result html div
@@ -284,3 +203,162 @@ function deductTime() {
   restartTimer(timeLeft);
 }
 
+
+// Store saved scores to the list
+function renderSavedInitials() {
+// Clear list element and update scoresCount
+  scoresList.innerHTML = "";
+  scoresCount.textContent = savedInitials.length;
+
+// Render a new li for each saved score
+  for (var i = 0; i < savedInitials.length; i++) {
+    var initials = savedInitials[i];
+
+    var li = document.createElement("li");
+    li.textContent = initials + " | " + correctAnswers + "/5" ;
+    li.setAttribute("data-index", i);
+
+    var button = document.createElement("button");
+    button.textContent = "Remove";
+    $(button).css({ "color": "#721C24", "border": "1px solid #F5C6CB", "background-color": "#F8D7DA", "margin-left": "20px", "height": "36px", "font-size": "1em"})
+
+    li.appendChild(button);
+    scoresList.appendChild(li);
+    $("button").removeClass("button").addClass(".button-list");
+  }
+}
+
+// This function called below will run when the page loads.
+function init() {
+   // Get stored initials from localStorage
+  var storedsavedInitials = JSON.parse(localStorage.getItem("savedInitials"));
+
+  // If tinitials were retrieved from localStorage, update the initials array
+  if (storedsavedInitials !== null) {
+    savedInitials = storedsavedInitials;
+  }
+
+   // Helper function that will render tinitials to the DOM
+  renderSavedInitials();
+}
+
+  // Stringify and set key in localStorage to initials array
+function storeSavedInitials() {
+  localStorage.setItem("savedInitials", JSON.stringify(savedInitials));
+}
+
+
+//START QUIZ
+
+// Fully loads HTML document before initializing controls
+$(document).ready(function () {
+
+  // Display the introduction text and start button
+  $(".row").hide();
+  $('.question').text(startText);
+  $("#nextButton").hide();
+  $("#saveButton").hide();
+  $(".result").hide();
+  $("#saveScore").hide();
+  $(this).find(".quizMessage").hide();
+
+  // Jquery eventListener triggers loading quiz content in via startQuiz function
+  $(this).find("#startButton").on("click", function () {
+    startQuiz()
+  });
+
+  // Add submit event to input/form
+  scoresForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    var initialsText = initialsInput.value.trim();
+  
+    // Return early if submitted initialsText is blank
+    if (initialsText === "") {
+      return;
+    }
+  
+    // Add new initialsText into the savedInitials array, clear any strings in the input
+    savedInitials.push(initialsText);
+    initialsInput.value = "";
+  
+    // Store updated savedInitials in localStorage, update the list
+    storeSavedInitials();
+    renderSavedInitials();
+  });
+
+  // Add click event to remove button in list
+  scoresList.addEventListener("click", function(event) {
+    var element = event.target;
+  
+    // Checks if element is a button
+    if (element.matches("button") === true) {
+      // Get its data-index value and removes initials element from the list
+      var index = element.parentElement.getAttribute("data-index");
+      savedInitials.splice(index, 1);
+  
+      // Store updated savedInitials in localStorage, and updates list
+      storeSavedInitials();
+      renderSavedInitials();
+    }
+  });
+  
+  // Event listener - iterates through the quiz questions
+  $(this).find("#nextButton").on("click", function () {
+
+    // Event listener - iterates through the quiz questions
+    if (!quizOver) {
+
+      value = $("input[type='radio']:checked").val();
+
+      // Checks to see if a radio input from the choices is selected, if not displays message to select an option
+      if (value == undefined) {
+        $(document).find(".quizMessage").text("Please choose an answer from the options");
+        $(document).find(".quizMessage").show();
+
+      } else {
+        $(document).find(".quizMessage").hide();
+
+        // Validates answer is correct from the choices, iterates to next question, displays correct answer message 
+        if (value == questions[currentQuestion].correctAnswer) {
+          correctAnswers++;
+          displayScore();
+        }
+
+        // Wrong answer triggers deduct 10 seconds function and displays incorrect answer message
+        else {
+          console.log("wrong answer")
+          displayIncorrectAnswer()
+          deductTime();
+        }
+
+        // First question has already been displayed so increment to next
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          displayCurrentQuestion();
+
+          // quiz is over and total score is displayed - option to save score is shown
+        } else {
+          displayTotalScore();
+          quizOver = true;
+          $("#nextButton").text("Play again?");
+          // $("#saveButton").show();
+          $(".choiceList").hide();
+          $("#app").hide();
+          onTimesUp();
+          resetTimer();
+        }
+      }
+
+      // reset the quiz and update nextButton text + hide save option
+    } else {
+      quizOver = false;
+      resetQuiz();
+      displayCurrentQuestion();
+      $("#nextButton").text("Next question");
+      $("#saveButton").hide();
+    }
+  });
+});
+
+init()

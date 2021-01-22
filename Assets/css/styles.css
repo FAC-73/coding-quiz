@@ -79,7 +79,7 @@ header {
     background-color: #fdc200;
 }
 
-/* QUESTIONS LIST  */
+/*  LIST  */
 
 ul {
     list-style: none;
@@ -107,6 +107,13 @@ li {
 .choiceList {
   color: black;
   size: 1em;
+}
+
+p {
+  font-family: 'Roboto Mono';
+  font-size: 1.5em;
+  color: black;
+  padding-left: 20px;
 }
 
 @media (max-width: 800px) {
@@ -289,7 +296,8 @@ input[type=submit] {
     padding-right: 12px;
     border-radius: 8px;
     border-style: none;
-    margin-top: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 input[type=submit]:hover {
@@ -312,9 +320,11 @@ label {
   font-size: 16px;
   color: black;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 /* FOOTER */
+
 footer {
   width: 100%;
   position: fixed;
