@@ -2,7 +2,7 @@
 A timed coding quiz application with multiple-choice questions. This app runs in the browser and includes dynamically updated HTML and CSS powered by JavaScript and Jquery. It also includes a fully responsive interface that can scale from large screens to small
 
 
-![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/correct-answer.png?raw=true "Javascript coding quiz app")
+![Javascript coding quiz app](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/CodingQuizDemo.png?raw=true "Javascript coding quiz app")
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -124,6 +124,9 @@ The start quiz button includes an eventListener that initializes the quiz questi
 8. Saved score and initials are stored in list, along with two actions:
 - Remove score
 - Play again
+
+![Add initials and save score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Add-initials.png?raw=true "Add initials and save score")
+
 
 Remove score deletes the list item. Play again restarts the quiz from the beginning.
 
