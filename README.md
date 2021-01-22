@@ -125,7 +125,7 @@ The start quiz button includes an eventListener that initializes the quiz questi
 - Remove score
 - Play again
 
-![Add initials and save score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/Add-initials.png?raw=true "Add initials and save score")
+![Displaying saved score](https://github.com/FAC-73/coding-quiz/blob/main/Assets/Images/SaveScores.png?raw=true "Displaying saved score]")
 
 
 Remove score deletes the list item. Play again restarts the quiz from the beginning.
@@ -142,12 +142,12 @@ Semantic html is used for elements such as buttons, inputs, footers, header, h1,
 2. styles.css - Contains layout, styling and media-queries for html content
 
 3. script.js - Contains Variables, variable arrays and objects for the questions and multiple choice answers, variable for correct answer types. 
-- Four eventListeners one to iterate through the questions, one to start the quiz, one to reset it and another to submit form details. 
+- Five eventListeners one to iterate through the questions, one to start the quiz, one to reset it,  another to submit form details to generate a list item, and a final one to remove a saved highscore from the list. 
 - A loop for iterating through the questions list and generating the new choice list for each one. 
 - A setInterval timer function that's triggered by an eventListener, functions to reset, deduct and restart the timer. 
 - If, Else statements for validating whether the selected answer is correct, or undefined. If correct they are iterated onto the next question and the correct score is added to the variable correctAnswers, along with a correct message indicator. 
 - If incorrect 10s is removed from the running timer using the deductTime function, an incorrect message is displayed. If an incorrect answer takes the timer to a value of <=0 the quiz is automatically restarted
-
+- Functions for creating a new list item to store a users score along with their initials using JSON stringify method. These initials and scores are stored in local storage so that they stay persistent.
 
 
 #### Responsive view example - On mobile
